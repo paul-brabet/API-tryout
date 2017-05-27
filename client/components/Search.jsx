@@ -1,5 +1,6 @@
 import React from 'react'
 import { runSearch } from '../api/index.js'
+import SearchResult from './SearchResult.jsx'
 
 class Search extends React.Component {
   constructor (props) {
@@ -14,13 +15,13 @@ class Search extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    runSearch(this.state.search, (err, res) => {
-      if (err) {
-        this.setState({ errMessage: err })
-        return
-      }
-      this.setState({ search: res })
-    })
+    // runSearch(this.state.search, (err, res) => {
+    //   if (err) {
+    //     this.setState({ errMessage: err })
+    //     return
+    //   }
+    //   this.setState({ search: res })
+    // })
   }
 
   handleChange (e) {
@@ -29,26 +30,18 @@ class Search extends React.Component {
   }
 
   render () {
-    console.log(this.state.search)
     return (
       <form onSubmit={this.handleSubmit}>
         <input
           name='entry'
           onChange={this.handleChange}
         />
-        <input type='Submit' value='Go' />
+        <input type='Submit' value='Search' />
+        <SearchResult data={this.state.search} />
+        {/* {console.log(this.state.search.artists)} */}
       </form>
     )
   }
 }
 
 export default Search
-
-// function Search () {
-//   return (
-//     <div className='search'>
-//       <input type='search' value='' />
-//       <input type='submit' value='Search!' />
-//     </div>
-//   )
-// }
