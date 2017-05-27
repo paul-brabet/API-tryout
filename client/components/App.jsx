@@ -5,7 +5,7 @@ import ShowBowie from './ShowBowie.jsx'
 function App () {
   return (
     <div>
-      {/* <Search /> */}
+      <Search />
 
       <ShowBowie />
     </div>
