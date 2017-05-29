@@ -15,13 +15,13 @@ class Search extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    // runSearch(this.state.search, (err, res) => {
-    //   if (err) {
-    //     this.setState({ errMessage: err })
-    //     return
-    //   }
-    //   this.setState({ search: res })
-    // })
+    runSearch(this.state.search, (err, res) => {
+      if (err) {
+        this.setState({ errMessage: err })
+        return
+      }
+      this.setState({ search: res })
+    })
   }
 
   handleChange (e) {
@@ -29,7 +29,8 @@ class Search extends React.Component {
     this.setState({ search: fields })
   }
 
-  render () {
+
+  render (props) {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -38,10 +39,19 @@ class Search extends React.Component {
         />
         <input type='Submit' value='Search' />
         <SearchResult data={this.state.search} />
-        {/* {console.log(this.state.search.artists)} */}
       </form>
     )
   }
 }
 
 export default Search
+
+// componentDidMount () {
+//   runSearch(this.renderSearchResults, (err, res) => {
+//     if (err) {
+//       this.setState({ errMessage: err })
+//       return
+//     }
+//     this.setState({ search: res })
+//   })
+// }
